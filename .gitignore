@@ -4,3 +4,4 @@ logs/
 *.duckdb
 profiles.yml
 analysis/.cache/
+__pycache__/
