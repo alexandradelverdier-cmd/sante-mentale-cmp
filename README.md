@@ -6,15 +6,32 @@ Infirmière en psychiatrie, en centre hospitalier, j'ai vu des lits rester occup
 
 ## Résultats (psychiatrie de l'adulte, 2025)
 
+### 1. Les consultations existent partout
+
+![Consultations en CMP et en unités de consultation pour 1 000 adultes](visuels/carte_consultations.png)
+
+- 88 % de l'activité ambulatoire passe par les CMP et les unités de consultation
+- De 68 à 467 actes pour 1 000 adultes selon le département
+- Lien faible avec la saturation des lits : 86,3 % d'occupation dans le quart des départements qui consultent le moins, 82,5 % dans celui qui consulte le plus
+
+### 2. Le suivi à domicile manque
+
+![Actes des équipes de psychiatrie au domicile pour 1 000 adultes](visuels/carte_soins_domicile.png)
+
+- Seulement 12 % de l'activité ambulatoire se fait au domicile des patients
+- De 1 à 109 actes pour 1 000 adultes selon le département
+- Paris consulte beaucoup (359 actes pour 1 000 adultes) mais va peu à domicile (25)
+
+### 3. C'est le domicile qui va avec des lits moins saturés
+
 | Départements classés par actes à domicile pour 1 000 adultes | Taux d'occupation des lits | Journées en soins sans consentement |
 |---|---|---|
 | Quart le plus faible | 87,2 % | 22,1 % |
 | Quart le plus élevé | 80,8 % | 18,7 % |
 
-- Seulement 12 % de l'activité ambulatoire (CMP, unités de consultation et domicile) se fait au domicile des patients
-- Les consultations en CMP et en unités de consultation varient de 68 à 467 actes pour 1 000 adultes
-- Les actes à domicile varient de 1 à 109 pour 1 000 adultes selon le département
-- Les psychologues en psychiatrie publique varient de 2 à 17 ETP pour 100 000 adultes
+### Autres constats
+
+- Les psychologues en psychiatrie (établissements de santé) varient de 2 à 17 ETP pour 100 000 adultes
 - 8 départements dépassent 95 % d'occupation de leurs lits à temps plein
 
 Ce sont des corrélations entre territoires, pas une relation de cause à effet.
