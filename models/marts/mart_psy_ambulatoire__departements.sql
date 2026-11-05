@@ -70,7 +70,11 @@ select
     {{ ratio('dep.lits_temps_plein * 100000', 'pop.population_adulte') }}       as lits_pour_100k,
     {{ ratio('dep.journees_temps_plein', 'dep.journees_lits_exploitables') }}   as taux_occupation,
     {{ ratio('dep.journees_temps_plein', 'dep.sejours_temps_plein') }}          as duree_moyenne_sejour,
-    {{ ratio('dep.journees_sans_consentement', 'dep.journees_tous_modes') }}    as part_journees_sans_consentement
+    {{ ratio('dep.journees_sans_consentement', 'dep.journees_tous_modes') }}    as part_journees_sans_consentement,
+    {{ ratio('dep.journees_sans_consentement * 1000', 'pop.population_adulte') }}
+                                                                                as journees_sans_consentement_pour_1000,
+    {{ ratio('(dep.journees_tous_modes - dep.journees_sans_consentement) * 1000', 'pop.population_adulte') }}
+                                                                                as journees_soins_libres_pour_1000
 
 from dep
 -- inner join : exclut Saint-Pierre-et-Miquelon, absent des estimations Insee

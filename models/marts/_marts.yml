@@ -19,3 +19,7 @@ models:
         description: Journées réalisées / journées-lits exploitables. Peut dépasser 100 % en cas de suroccupation.
       - name: part_journees_sans_consentement
         description: Part des journées à temps complet en SDRE, SDT ou péril imminent (toutes disciplines, PSY2 n'étant pas ventilé).
+      - name: journees_sans_consentement_pour_1000
+        description: Journées à temps complet en SDRE, SDT ou péril imminent pour 1 000 adultes. À lire avec la part, qui varie mécaniquement avec les soins libres.
+      - name: journees_soins_libres_pour_1000
+        description: Journées à temps complet hors soins sans consentement pour 1 000 adultes.

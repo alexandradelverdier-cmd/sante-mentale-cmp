@@ -1,0 +1,6 @@
+pandas
+scipy
+matplotlib
+geopandas<1.1
+google-cloud-bigquery
+db-dtypes

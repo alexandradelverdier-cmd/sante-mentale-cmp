@@ -1,0 +1,7 @@
+question,x,y,n,rho,p_value,fiable_5pct,rho_hors_idf,p_hors_idf
+Domicile et occupation des lits,actes_domicile_pour_1000,taux_occupation,96,-0.16,0.1128,False,-0.13,0.2117
+Domicile et part de soins sans consentement,actes_domicile_pour_1000,part_journees_sans_consentement,96,-0.04,0.6932,False,-0.02,0.8778
+Consultations et occupation des lits,actes_consultation_pour_1000,taux_occupation,96,-0.11,0.307,False,-0.1,0.3305
+Lits et part de soins sans consentement,lits_pour_100k,part_journees_sans_consentement,96,-0.45,0.0,True,-0.45,0.0
+Lits et soins sans consentement (volume),lits_pour_100k,journees_sans_consentement_pour_1000,96,0.21,0.0447,True,0.2,0.0564
+Lits et soins libres (volume),lits_pour_100k,journees_soins_libres_pour_1000,96,0.83,0.0,True,0.82,0.0
