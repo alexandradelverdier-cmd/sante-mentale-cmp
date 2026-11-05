@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: int_psy_adulte__etablissements
+    description: Psychiatrie de l'adulte (discipline GEN) enrichie du département et des modes légaux de soins.
+    columns:
+      - name: finess
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_sae__etablissements')
+                field: finess
+
+  - name: int_population_adulte__departements
+    description: Population de 20 ans et plus par département.
+    columns:
+      - name: code_departement_sae
+        data_tests: [unique, not_null]

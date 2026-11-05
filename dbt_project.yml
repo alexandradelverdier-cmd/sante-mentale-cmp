@@ -1,0 +1,32 @@
+name: sante_mentale_cmp
+version: "1.0.0"
+config-version: 2
+profile: sante_mentale_cmp
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+macro-paths: ["macros"]
+
+vars:
+  raw_dataset: raw_sae
+
+models:
+  sante_mentale_cmp:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table
+
+seeds:
+  sante_mentale_cmp:
+    insee_population_departement:
+      +column_types:
+        code_insee: string
+    ref_departements:
+      +column_types:
+        code_insee: string
+        code_sae: string

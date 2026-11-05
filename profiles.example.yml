@@ -1,0 +1,11 @@
+# À copier dans ~/.dbt/profiles.yml
+sante_mentale_cmp:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: delverdier-alexandra-wagon
+      dataset: dbt_sante_mentale_cmp
+      location: EU
+      threads: 4

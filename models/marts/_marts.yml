@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: mart_psy_ambulatoire__departements
+    description: >
+      Accès à la psychiatrie ambulatoire et au suivi à domicile par département
+      (psychiatrie de l'adulte, SAE 2025, population Insee 2023).
+      Les ETP de personnel couvrent toute la psychiatrie de l'établissement : la SAE ne les isole pas pour les CMP.
+    columns:
+      - name: code_departement_sae
+        data_tests: [unique, not_null]
+      - name: actes_domicile
+        description: Actes, soins et interventions à domicile ou en institution substitutive au domicile.
+      - name: part_actes_domicile
+        description: Part du domicile dans l'activité CMP + domicile.
+      - name: taux_occupation
+        description: Journées réalisées / journées-lits exploitables. Peut dépasser 100 % en cas de suroccupation.
+      - name: part_journees_sans_consentement
+        description: Part des journées à temps complet en SDRE, SDT ou péril imminent (toutes disciplines, PSY2 n'étant pas ventilé).

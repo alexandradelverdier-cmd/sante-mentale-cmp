@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: sae
+    description: >
+      Statistique annuelle des établissements de santé (SAE 2025, base statistique),
+      DREES. Fichiers chargés tels quels, toutes colonnes en texte.
+    schema: "{{ var('raw_dataset') }}"
+    tables:
+      - name: sae_2025_id
+        description: Identification des établissements (une ligne par entité interrogée).
+      - name: sae_2025_psy
+        description: Bordereau PSY, une ligne par établissement et discipline (GEN, INF, PEN, TOT).
+      - name: sae_2025_psy2
+        description: Bordereau PSY2, journées et actes par mode légal de soins, équipes mobiles personnes âgées.
