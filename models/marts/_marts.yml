@@ -11,8 +11,10 @@ models:
         data_tests: [unique, not_null]
       - name: actes_domicile
         description: Actes, soins et interventions à domicile ou en institution substitutive au domicile.
+      - name: actes_consultation_pour_1000
+        description: Actes en CMP et en unités de consultation de psychiatrie pour 1 000 adultes.
       - name: part_actes_domicile
-        description: Part du domicile dans l'activité CMP + domicile.
+        description: Part du domicile dans l'activité consultations (CMP + unités de consultation) + domicile.
       - name: taux_occupation
         description: Journées réalisées / journées-lits exploitables. Peut dépasser 100 % en cas de suroccupation.
       - name: part_journees_sans_consentement

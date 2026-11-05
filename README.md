@@ -11,7 +11,8 @@ Infirmière en psychiatrie, en centre hospitalier, j'ai vu des lits rester occup
 | Quart le plus faible | 87,2 % | 22,1 % |
 | Quart le plus élevé | 80,8 % | 18,7 % |
 
-- Seulement 14,6 % de l'activité ambulatoire (CMP + domicile) se fait au domicile des patients
+- Seulement 12 % de l'activité ambulatoire (CMP, unités de consultation et domicile) se fait au domicile des patients
+- Les consultations en CMP et en unités de consultation varient de 68 à 467 actes pour 1 000 adultes
 - Les actes à domicile varient de 1 à 109 pour 1 000 adultes selon le département
 - Les psychologues en psychiatrie publique varient de 2 à 17 ETP pour 100 000 adultes
 - 8 départements dépassent 95 % d'occupation de leurs lits à temps plein
@@ -46,6 +47,7 @@ sources (SAE 2025, DREES) + seeds (Insee 2023)
 
 - **Discipline GEN plutôt que TOT** : la SAE fournit un total déjà calculé ; on part du détail adulte pour éviter les doubles comptes.
 - **Localisation par `DEP_DIFF`** : quand une entité juridique répond pour plusieurs sites, l'activité est rattachée au département où elle a réellement lieu.
+- **CMP et unités de consultation regroupés** : certains hôpitaux, surtout les CHU, déclarent une grande part de leur activité en unités de consultation plutôt qu'en CMP (46 % dans l'Hérault). Les séparer créerait un artefact de déclaration.
 - **Données brutes chargées en texte**, typées dans le staging : les codes FINESS commencent par un zéro qui disparaîtrait avec une détection automatique des types.
 
 ## Limites

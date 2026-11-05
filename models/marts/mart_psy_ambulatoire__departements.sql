@@ -11,6 +11,8 @@ dep as (
         sum(nb_cmp)                                 as nb_cmp,
         sum(nb_cattp)                               as nb_cattp,
         sum(actes_cmp)                              as actes_cmp,
+        sum(actes_unites_consultation)              as actes_unites_consultation,
+        sum(nb_unites_consultation)                 as nb_unites_consultation,
         sum(actes_cattp)                            as actes_cattp,
         sum(actes_domicile)                         as actes_domicile,
         sum(places_placement_familial)              as places_placement_familial,
@@ -46,8 +48,13 @@ select
     -- offre ambulatoire et domicile, rapportée à la population adulte
     {{ ratio('dep.nb_cmp * 100000', 'pop.population_adulte') }}                 as cmp_pour_100k,
     {{ ratio('dep.actes_cmp * 1000', 'pop.population_adulte') }}                as actes_cmp_pour_1000,
+    -- consultations = CMP + unités de consultation : certains hôpitaux (CHU surtout) déclarent leur activité dans ces unités plutôt qu'en CMP
+    {{ ratio('(coalesce(dep.actes_cmp, 0) + coalesce(dep.actes_unites_consultation, 0)) * 1000', 'pop.population_adulte') }}
+                                                                                as actes_consultation_pour_1000,
     {{ ratio('dep.actes_domicile * 1000', 'pop.population_adulte') }}           as actes_domicile_pour_1000,
-    {{ ratio('dep.actes_domicile', 'dep.actes_domicile + dep.actes_cmp') }}     as part_actes_domicile,
+    {{ ratio('dep.actes_domicile',
+             'coalesce(dep.actes_domicile, 0) + coalesce(dep.actes_cmp, 0) + coalesce(dep.actes_unites_consultation, 0)') }}
+                                                                                as part_actes_domicile,
     {{ ratio('(coalesce(dep.places_placement_familial, 0) + coalesce(dep.places_appartement_therapeutique, 0)) * 100000',
              'pop.population_adulte') }}                                        as places_alternatives_pour_100k,
 

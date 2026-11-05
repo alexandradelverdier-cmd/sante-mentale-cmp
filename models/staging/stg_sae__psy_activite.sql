@@ -9,10 +9,12 @@ select
 
     -- structures ambulatoires
     {{ to_num('nb_cmp_seul') }}             as nb_cmp,
+    {{ to_num('nb_consult_seul') }}         as nb_unites_consultation,
     {{ to_num('nb_cattp') }}                as nb_cattp,
 
     -- activité ambulatoire (actes, soins et interventions)
     {{ to_num('act_cmp_seul') }}            as actes_cmp,
+    {{ to_num('act_consult_seul') }}        as actes_unites_consultation,
     {{ to_num('act_cattp') }}               as actes_cattp,
     {{ to_num('act_ad') }}                  as actes_domicile,
     {{ to_num('act_ems') }}                 as actes_medico_social,
