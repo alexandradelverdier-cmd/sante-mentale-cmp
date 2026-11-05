@@ -1,9 +1,10 @@
--- Grain : un établissement (toutes disciplines confondues)
+-- Grain : un établissement x une année (toutes disciplines confondues)
 with source as (
-    select * from {{ source('sae', 'sae_2025_psy2') }}
+    select * from {{ source('sae', 'sae_psy2') }}
 )
 
 select
+    cast(an as {{ dbt.type_int() }})        as annee,
     trim(fi)                                as finess,
     {{ to_num('psy_c22') }}                 as journees_soins_libres,
     {{ to_num('psy_c23') }}                 as journees_sdre,
@@ -12,6 +13,7 @@ select
     {{ to_num('psy_c26') }}                 as journees_detenus,
     {{ to_num('psy_c27') }}                 as journees_sdt,
     {{ to_num('psy_c28') }}                 as journees_peril_imminent,
+    -- question absente en 2023
     trim(psy_a49) = '1'                     as a_equipe_mobile_personne_agee,
     {{ to_num('psy_b49') }}                 as interventions_equipe_mobile_personne_agee
 from source

@@ -5,6 +5,7 @@ with q as (
         ntile(4) over (order by lits_pour_100k) as quartile_lits
     from {{ ref('mart_psy_ambulatoire__departements') }}
     where length(code_insee) = 2  -- France métropolitaine
+      and annee = 2025
 )
 
 select

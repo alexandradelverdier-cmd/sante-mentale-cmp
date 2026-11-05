@@ -3,13 +3,13 @@ version: 2
 sources:
   - name: sae
     description: >
-      Statistique annuelle des établissements de santé (SAE 2025, base statistique),
-      DREES. Fichiers chargés tels quels, toutes colonnes en texte.
+      Statistique annuelle des établissements de santé (SAE), base statistique, DREES.
+      Millésimes 2023 à 2025 empilés par scripts/preparer_donnees_brutes.py, toutes colonnes en texte.
     schema: "{{ var('raw_dataset') }}"
     tables:
-      - name: sae_2025_id
-        description: Identification des établissements (une ligne par entité interrogée).
-      - name: sae_2025_psy
-        description: Bordereau PSY, une ligne par établissement et discipline (GEN, INF, PEN, TOT).
-      - name: sae_2025_psy2
-        description: Bordereau PSY2, journées et actes par mode légal de soins, équipes mobiles personnes âgées.
+      - name: sae_id
+        description: Identification des établissements, une ligne par entité interrogée et par année.
+      - name: sae_psy
+        description: Bordereau PSY, une ligne par établissement, discipline (GEN, INF, PEN, TOT) et année.
+      - name: sae_psy2
+        description: Bordereau PSY2, journées et actes par mode légal de soins, une ligne par établissement et par année.

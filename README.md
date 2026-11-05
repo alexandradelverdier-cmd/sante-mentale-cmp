@@ -4,16 +4,16 @@ Infirmière en psychiatrie, en centre hospitalier, j'ai vu des lits rester occup
 
 **Question** : comment la psychiatrie soigne-t-elle en dehors des murs de l'hôpital, et les départements qui suivent davantage leurs patients en ambulatoire et à domicile ont-ils des lits moins saturés ?
 
-## Résultats (psychiatrie de l'adulte, 2025)
+## Résultats (psychiatrie de l'adulte)
 
-### 1. Les consultations existent partout
+### 1. Les consultations existent partout (2025)
 
 ![Consultations en CMP et en unités de consultation pour 1 000 adultes](visuels/carte_consultations.png)
 
 - 88 % de l'activité ambulatoire passe par les CMP et les unités de consultation
 - De 68 à 467 actes pour 1 000 adultes selon le département, soit un écart d'environ 7 fois
 
-### 2. Le suivi à domicile est le maillon le plus faible
+### 2. Le suivi à domicile est le maillon le plus faible (2025)
 
 ![Actes des équipes de psychiatrie au domicile pour 1 000 adultes](visuels/carte_soins_domicile.png)
 
@@ -23,65 +23,86 @@ Infirmière en psychiatrie, en centre hospitalier, j'ai vu des lits rester occup
 
 ### 3. L'hypothèse de départ n'est pas confirmée à l'échelle du département
 
-Je m'attendais à ce que les départements qui suivent davantage leurs patients à domicile aient des lits moins saturés. Les données ne le montrent pas de façon fiable :
+Je m'attendais à ce que les départements qui suivent davantage leurs patients à domicile aient des lits moins saturés. Les données ne le montrent pas de façon fiable, ni en comparant les départements entre eux, ni en suivant chaque département dans le temps :
 
-| Lien testé (96 départements de métropole) | Corrélation de Spearman | p-value | Fiable au seuil de 5 % |
-|---|---|---|---|
-| Domicile et occupation des lits | -0,16 | 0,11 | Non |
-| Domicile et part de soins sans consentement | -0,04 | 0,69 | Non |
-| Consultations et occupation des lits | -0,11 | 0,31 | Non |
+| Lien testé (96 départements de métropole) | Entre départements, 2025 | Variations 2023-2025 au sein de chaque département |
+|---|---|---|
+| Domicile et occupation des lits | -0,16 (p = 0,11) | +0,16 (p = 0,13) |
+| Domicile et part de soins sans consentement | -0,04 (p = 0,68) | |
+| Domicile et durée moyenne de séjour | | -0,03 (p = 0,75) |
+| Consultations et occupation des lits | -0,11 (p = 0,31) | +0,14 (p = 0,18) |
+
+Corrélations de Spearman. Aucun de ces liens n'est fiable au seuil de 5 %.
 
 Ça ne contredit pas l'expérience de terrain : la maille départementale est trop grossière. Pour mesurer l'effet du suivi à la sortie, il faudrait suivre les parcours des patients, et ces données ne sont pas ouvertes.
 
-### 4. Quand les lits manquent, ce sont les soins libres qui reculent
+### 4. Quand les lits manquent, ce sont les soins libres qui reculent (2025)
 
 | Départements classés par lits pour 100 000 adultes | Lits | Journées sans consentement pour 1 000 adultes | Journées en soins libres pour 1 000 adultes | Part sans consentement |
 |---|---|---|---|---|
 | Quart avec le moins de lits | 63 | 58 | 165 | 26 % |
-| Quart avec le plus de lits | 130 | 68 | 364 | 16 % |
+| Quart avec le plus de lits | 130 | 67 | 362 | 16 % |
 
 - Les journées en soins libres suivent très fortement le nombre de lits (corrélation 0,83, p < 0,001)
-- Les journées sans consentement varient peu (corrélation 0,21, p = 0,04)
-- La part de contrainte est donc plus élevée là où les lits manquent (-0,45, p < 0,001), mais ce n'est pas la contrainte qui augmente : c'est l'accès à l'hospitalisation libre qui se réduit
+- Les journées sans consentement varient peu (corrélation 0,20, p = 0,047)
+- La part de contrainte est donc plus élevée là où les lits manquent (-0,44, p < 0,001), mais ce n'est pas la contrainte qui augmente : c'est l'accès à l'hospitalisation libre qui se réduit
+
+Le résultat se confirme dans le temps : entre 2023 et 2025, **les départements qui ont perdu des lits ont aussi perdu des journées en soins libres** (corrélation entre les variations 0,33, p = 0,001). Comparer chaque département à lui-même écarte les explications liées à ses caractéristiques stables, comme sa géographie ou son profil social.
 
 Les patients qui pourraient être hospitalisés librement mais ne trouvent pas de lit sont précisément ceux pour qui le suivi en consultation et à domicile compte le plus.
 
-Les deux liens forts (soins libres et part de contrainte) tiennent quand on retire l'Île-de-France ; le lien faible sur le volume de soins sans consentement, lui, n'est plus significatif (détail dans `analysis/resultats/correlations.csv`). Ce sont des corrélations entre territoires, pas des relations de cause à effet.
+Les deux liens forts (soins libres et part de contrainte) tiennent quand on retire l'Île-de-France ; le lien faible sur le volume de soins sans consentement, lui, n'est plus significatif (détail dans `analysis/resultats/`). Ce sont des corrélations, pas des relations de cause à effet.
+
+### 5. Entre 2023 et 2025 : plus de patients, moins de lits et de lieux de vie
+
+![Évolution 2023-2025 de la psychiatrie de l'adulte](visuels/evolution_2023_2025.png)
+
+- Le nombre de patients suivis augmente de 5,8 %, le suivi à domicile de 5,5 % et les consultations de 3,6 %
+- Les lits à temps plein reculent de 2,7 % et les infirmiers de 2,3 % : chaque soignant suit 8 % de patients en plus
+- Les places en lieux de vie intermédiaires (placement familial et appartements thérapeutiques) reculent de 9,6 %, alors que ce sont elles qui permettent de sortir de l'hôpital sans revenir directement au domicile
+- Les écarts entre départements pour le suivi à domicile restent stables : le département au 90e centile fait environ 8 fois plus d'actes que celui au 10e centile, chaque année
 
 ## Architecture
 
 ```
-sources (SAE 2025, DREES) + seeds (Insee 2023)
+archives DREES (SAE 2023, 2024, 2025) + fichier Insee
         │
-   staging        typage, renommage, une vue par fichier source
+ scripts/preparer_donnees_brutes.py   extraction, harmonisation des colonnes et de l'encodage, empilement des années
         │
- intermediate     psychiatrie de l'adulte par établissement, population adulte par département
+   sources + seeds    chargés dans BigQuery, toutes colonnes en texte
         │
-     marts        mart_psy_ambulatoire__departements
+   staging            typage, renommage, une vue par fichier source
         │
-   analysis       corrélations de Spearman et cartes (Python, lecture du mart dans BigQuery)
+ intermediate         psychiatrie de l'adulte par établissement, contrôle de cohérence, population par département
+        │
+     marts            mart_psy_ambulatoire__departements
+        │
+   analysis           corrélations, évolutions et visuels (Python, lecture du mart dans BigQuery)
 ```
 
 | Modèle | Grain |
 |---|---|
-| `stg_sae__etablissements` | un établissement |
-| `stg_sae__psy_activite` | un établissement x une discipline de psychiatrie |
-| `stg_sae__psy_modes_legaux` | un établissement |
-| `stg_insee__population` | un département x une classe d'âge |
-| `int_psy_adulte__etablissements` | un établissement ayant une activité de psychiatrie de l'adulte |
-| `int_population_adulte__departements` | un département |
-| `mart_psy_ambulatoire__departements` | un département |
+| `stg_sae__etablissements` | un établissement x une année |
+| `stg_sae__psy_activite` | un établissement x une discipline de psychiatrie x une année |
+| `stg_sae__psy_modes_legaux` | un établissement x une année |
+| `stg_insee__population` | un département x une classe d'âge x une année |
+| `int_psy_adulte__etablissements` | un établissement ayant une activité de psychiatrie de l'adulte x une année |
+| `int_population_adulte__departements` | un département x une année de la SAE |
+| `mart_psy_ambulatoire__departements` | un département x une année |
 
-25 tests dbt (unicité des grains, clés, valeurs acceptées, proportions entre 0 et 1).
+25 tests dbt : grain de chaque modèle, clés non nulles, valeurs acceptées, proportions entre 0 et 1, population disponible pour chaque année, et une surveillance de la qualité des déclarations.
 
 ## Choix de modélisation
 
 - **Discipline GEN plutôt que TOT** : la SAE fournit un total déjà calculé ; on part du détail adulte pour éviter les doubles comptes.
 - **Localisation par `DEP_DIFF`** : quand une entité juridique répond pour plusieurs sites, l'activité est rattachée au département où elle a réellement lieu.
 - **CMP et unités de consultation regroupés** : certains hôpitaux, surtout les CHU, déclarent une grande part de leur activité en unités de consultation plutôt qu'en CMP (46 % dans l'Hérault). Les séparer créerait un artefact de déclaration.
+- **Contrôle de cohérence entre bordereaux** : les journées ventilées par mode légal (PSY2) doivent correspondre aux journées d'hospitalisation déclarées dans PSY. Quand l'écart dépasse un facteur 2, les modes légaux de l'établissement sont écartés. Sans ce contrôle, le CHU de Grenoble, qui déclare 586 847 journées dans PSY2 en 2024 contre environ 9 500 dans PSY, fausserait à lui seul la tendance nationale. Entre 20 et 29 établissements sont écartés chaque année, soit 1,5 à 1,6 % des journées d'hospitalisation adulte : certains n'ont pas rempli PSY2, d'autres y déclarent des chiffres incohérents.
+- **Années empilées dès les données brutes** : les noms de colonnes (minuscules en 2023 et 2024, majuscules en 2025) et l'encodage (Latin-1 puis UTF-8) changent selon les millésimes. Le script de préparation les harmonise ; toutes les transformations métier restent dans dbt.
 - **Données brutes chargées en texte**, typées dans le staging : les codes FINESS commencent par un zéro qui disparaîtrait avec une détection automatique des types.
-
+- **Population par année** : chaque année de la SAE prend la dernière estimation Insee disponible ; ajouter une nouvelle estimation ne demande aucun changement de code.
 - **Corrélation de Spearman** : basée sur les rangs, elle résiste aux valeurs extrêmes et ne suppose pas de relation linéaire entre des départements très hétérogènes.
+- **Une année à la fois pour les corrélations entre départements** : empiler les trois années compterait chaque département trois fois et gonflerait artificiellement la significativité. Les évolutions sont testées sur les variations 2023-2025, une observation par département.
 - **Volumes et parts** : une part de soins sans consentement peut varier parce que les soins libres changent. Les deux sont calculés pour ne pas confondre les effets.
 
 ## Limites
@@ -90,13 +111,14 @@ sources (SAE 2025, DREES) + seeds (Insee 2023)
 - Il n'existe pas de données nationales ouvertes sur les délais d'attente en CMP.
 - Les patients peuvent être soignés hors de leur département, ce qui influence les ratios, surtout en Île-de-France.
 - Les modes légaux de soins (bordereau PSY2) ne sont pas ventilés entre adultes et enfants.
-- Quelques valeurs sont à interpréter avec prudence, par exemple le Territoire de Belfort, qui déclare 0,1 % de soins sans consentement.
-- La population de référence est celle de 2023, dernière estimation par classe d'âge disponible.
+- La population de référence est celle de 2023 pour les trois années, dernière estimation par classe d'âge disponible dans le fichier utilisé. Les évolutions de population sont faibles sur la période, mais les taux pour 1 000 adultes de 2024 et 2025 sont légèrement surestimés.
+- En 2023, la SAE ne renseigne pas l'isolement ni les équipes mobiles pour personnes âgées.
+- Quelques valeurs sont à interpréter avec prudence, par exemple le Territoire de Belfort, qui déclare 0,1 % de soins sans consentement en 2025.
 
 ## Sources
 
-- DREES, Statistique annuelle des établissements de santé (SAE) 2025, bases statistiques
-- Insee, estimations de population au 1er janvier 2023 par département
+- DREES, Statistique annuelle des établissements de santé (SAE) 2023, 2024 et 2025, bases statistiques
+- Insee, estimations de population au 1er janvier par département, sexe et grande classe d'âge
 
 ## Stack
 

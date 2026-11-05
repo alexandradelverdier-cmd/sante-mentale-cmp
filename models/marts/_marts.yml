@@ -3,12 +3,16 @@ version: 2
 models:
   - name: mart_psy_ambulatoire__departements
     description: >
-      Accès à la psychiatrie ambulatoire et au suivi à domicile par département
-      (psychiatrie de l'adulte, SAE 2025, population Insee 2023).
+      Accès à la psychiatrie ambulatoire et au suivi à domicile par département et par année
+      (psychiatrie de l'adulte, SAE 2023 à 2025, population Insee).
       Les ETP de personnel couvrent toute la psychiatrie de l'établissement : la SAE ne les isole pas pour les CMP.
     columns:
       - name: code_departement_sae
-        data_tests: [unique, not_null]
+        data_tests: [not_null]
+      - name: annee
+        data_tests: [not_null]
+      - name: nb_etablissements_modes_legaux_exclus
+        description: Établissements dont les modes légaux de soins sont écartés pour incohérence entre PSY et PSY2.
       - name: actes_domicile
         description: Actes, soins et interventions à domicile ou en institution substitutive au domicile.
       - name: actes_consultation_pour_1000

@@ -2,15 +2,22 @@ version: 2
 
 models:
   - name: stg_sae__etablissements
-    description: Établissements interrogés par la SAE 2025, localisés au département de leur activité réelle.
+    description: Établissements interrogés par la SAE, localisés au département de leur activité réelle. Grain établissement x année.
     columns:
+      - name: annee
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [2023, 2024, 2025]
+                quote: false
       - name: finess
-        data_tests: [unique, not_null]
+        data_tests: [not_null]
       - name: code_departement_sae
         data_tests: [not_null]
 
   - name: stg_sae__psy_activite
-    description: Capacités, activité et personnel de psychiatrie, par établissement et discipline.
+    description: Capacités, activité et personnel de psychiatrie, par établissement, discipline et année.
     columns:
       - name: discipline
         data_tests:
@@ -19,13 +26,13 @@ models:
                 values: [GEN, INF, PEN, TOT]
 
   - name: stg_sae__psy_modes_legaux
-    description: Journées d'hospitalisation à temps complet par mode légal de soins.
+    description: Journées d'hospitalisation à temps complet par mode légal de soins, par établissement et année.
     columns:
       - name: finess
-        data_tests: [unique, not_null]
+        data_tests: [not_null]
 
   - name: stg_insee__population
-    description: Population au 1er janvier 2023 par département et classe d'âge (Insee).
+    description: Population au 1er janvier par département, classe d'âge et année (Insee).
     columns:
       - name: code_departement_sae
         data_tests: [not_null]

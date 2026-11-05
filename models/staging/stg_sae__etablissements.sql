@@ -1,9 +1,10 @@
--- Grain : un établissement (FINESS interrogé)
+-- Grain : un établissement (FINESS interrogé) x une année
 with source as (
-    select * from {{ source('sae', 'sae_2025_id') }}
+    select * from {{ source('sae', 'sae_id') }}
 )
 
 select
+    cast(an as {{ dbt.type_int() }})                as annee,
     trim(fi)                                        as finess,
     trim(fi_ej)                                     as finess_ej,
     rs                                              as raison_sociale,

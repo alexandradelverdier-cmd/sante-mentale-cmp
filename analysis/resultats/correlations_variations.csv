@@ -1,0 +1,6 @@
+variation_x,variation_y,n,rho,p_value,fiable_5pct
+actes_domicile_pour_1000,taux_occupation,96,0.16,0.127,False
+actes_domicile_pour_1000,duree_moyenne_sejour,96,-0.03,0.7488,False
+actes_consultation_pour_1000,taux_occupation,96,0.14,0.1796,False
+lits_pour_100k,taux_occupation,96,-0.33,0.001,True
+lits_pour_100k,journees_soins_libres_pour_1000,96,0.33,0.001,True

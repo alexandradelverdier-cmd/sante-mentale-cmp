@@ -6,6 +6,7 @@ with q as (
         ntile(4) over (order by actes_domicile_pour_1000) as quartile_domicile
     from {{ ref('mart_psy_ambulatoire__departements') }}
     where actes_domicile_pour_1000 is not null
+      and annee = 2025
 )
 
 select

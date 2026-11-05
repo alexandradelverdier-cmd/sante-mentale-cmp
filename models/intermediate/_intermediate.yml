@@ -2,19 +2,19 @@ version: 2
 
 models:
   - name: int_psy_adulte__etablissements
-    description: Psychiatrie de l'adulte (discipline GEN) enrichie du département et des modes légaux de soins.
+    description: >
+      Psychiatrie de l'adulte (discipline GEN) par établissement et année, enrichie du département
+      et des modes légaux de soins. Les modes légaux sont écartés quand PSY2 n'est pas cohérent avec PSY.
     columns:
       - name: finess
-        data_tests:
-          - unique
-          - not_null
-          - relationships:
-              arguments:
-                to: ref('stg_sae__etablissements')
-                field: finess
+        data_tests: [not_null]
+      - name: modes_legaux_coherents
+        description: Vrai si les journées ventilées par mode légal (PSY2) représentent entre 0,5 et 2 fois les journées à temps complet déclarées dans PSY.
 
   - name: int_population_adulte__departements
-    description: Population de 20 ans et plus par département.
+    description: Population de 20 ans et plus par département, pour chaque année de la SAE (dernière estimation Insee disponible).
     columns:
       - name: code_departement_sae
-        data_tests: [unique, not_null]
+        data_tests: [not_null]
+      - name: annee_population
+        data_tests: [not_null]

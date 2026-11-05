@@ -1,5 +1,5 @@
--- Grain : un département
--- Indicateurs d'accès à la psychiatrie ambulatoire et au suivi à domicile, psychiatrie de l'adulte, SAE 2025
+-- Grain : un département x une année
+-- Indicateurs d'accès à la psychiatrie ambulatoire et au suivi à domicile, psychiatrie de l'adulte, SAE 2023 à 2025
 with etab as (
     select * from {{ ref('int_psy_adulte__etablissements') }}
 ),
@@ -7,7 +7,10 @@ with etab as (
 dep as (
     select
         code_departement_sae,
+        annee,
         count(*)                                    as nb_etablissements,
+        sum(case when modes_legaux_coherents then 0 else 1 end)
+                                                    as nb_etablissements_modes_legaux_exclus,
         sum(nb_cmp)                                 as nb_cmp,
         sum(nb_cattp)                               as nb_cattp,
         sum(actes_cmp)                              as actes_cmp,
@@ -31,7 +34,7 @@ dep as (
         sum(case when a_equipe_mobile_personne_agee then 1 else 0 end)
                                                     as nb_equipes_mobiles_personne_agee
     from etab
-    group by 1
+    group by 1, 2
 ),
 
 pop as (
@@ -40,10 +43,12 @@ pop as (
 
 select
     dep.code_departement_sae,
+    dep.annee,
+    pop.annee_population,
     pop.code_insee,
     pop.nom_departement,
     pop.population_adulte,
-    dep.*  {{- ' except (code_departement_sae)' if target.type == 'bigquery' else ' exclude (code_departement_sae)' }},
+    dep.*  {{- ' except (code_departement_sae, annee)' if target.type == 'bigquery' else ' exclude (code_departement_sae, annee)' }},
 
     -- offre ambulatoire et domicile, rapportée à la population adulte
     {{ ratio('dep.nb_cmp * 100000', 'pop.population_adulte') }}                 as cmp_pour_100k,
@@ -78,4 +83,4 @@ select
 
 from dep
 -- inner join : exclut Saint-Pierre-et-Miquelon, absent des estimations Insee
-inner join pop using (code_departement_sae)
+inner join pop using (code_departement_sae, annee)

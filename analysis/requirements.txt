@@ -4,3 +4,5 @@ matplotlib
 geopandas<1.1
 google-cloud-bigquery
 db-dtypes
+py7zr
+xlrd

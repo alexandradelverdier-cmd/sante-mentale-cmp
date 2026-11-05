@@ -1,9 +1,10 @@
--- Grain : un établissement x une discipline de psychiatrie
+-- Grain : un établissement x une discipline de psychiatrie x une année
 with source as (
-    select * from {{ source('sae', 'sae_2025_psy') }}
+    select * from {{ source('sae', 'sae_psy') }}
 )
 
 select
+    cast(an as {{ dbt.type_int() }})        as annee,
     trim(fi)                                as finess,
     trim(dis)                               as discipline,
 
@@ -29,6 +30,10 @@ select
     {{ to_num('jli_htp') }}                 as journees_lits_exploitables,
     {{ to_num('jou_htp') }}                 as journees_temps_plein,
     {{ to_num('sej_htp') }}                 as sejours_temps_plein,
+    -- journées des autres prises en charge à temps complet, pour le contrôle de cohérence avec PSY2
+    coalesce({{ to_num('jou_pft') }}, 0) + coalesce({{ to_num('jou_aat') }}, 0)
+      + coalesce({{ to_num('jou_acp') }}, 0) + coalesce({{ to_num('jou_ccu') }}, 0)
+                                            as journees_autres_temps_complet,
 
     -- patients
     {{ to_num('fil_tot') }}                 as file_active_totale,
