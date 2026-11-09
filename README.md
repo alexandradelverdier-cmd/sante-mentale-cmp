@@ -1,6 +1,6 @@
 # Accès aux CMP et suivi psychiatrique à domicile en France
 
-J'ai été infirmière en psychiatrie pendant plusieurs années, en centre hospitalier. J'y ai vu des lits rester occupés faute de relais à la sortie, et des patients revenir quelques mois plus tard parce que le suivi à l'extérieur n'avait pas pu se mettre en place.
+J'ai été infirmière en psychiatrie pendant plusieurs années. J'y ai vu des lits rester occupés faute de relais à la sortie, et des patients revenir quelques mois plus tard parce que le suivi à l'extérieur n'avait pas pu se mettre en place.
 
 Ces situations m'ont laissé des questions. Aujourd'hui data engineer, j'ai voulu les creuser avec les données nationales : ce projet construit un pipeline sur trois années de la Statistique annuelle des établissements de santé (DREES, 2023 à 2025) pour voir ce que les chiffres disent de la psychiatrie en dehors de l'hôpital.
 
