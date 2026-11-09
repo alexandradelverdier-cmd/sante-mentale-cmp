@@ -27,12 +27,12 @@ Je m'attendais à ce que les départements qui suivent davantage leurs patients 
 
 | Lien testé (96 départements de métropole) | Entre départements, 2025 | Variations 2023-2025 au sein de chaque département |
 |---|---|---|
-| Domicile et occupation des lits | -0,16 (p = 0,11) | +0,16 (p = 0,13) |
+| Domicile et occupation des lits | -0,16 (p = 0,11) | +0,17 (p = 0,11) |
 | Domicile et part de soins sans consentement | -0,04 (p = 0,68) | |
-| Domicile et durée moyenne de séjour | | -0,03 (p = 0,75) |
+| Domicile et durée moyenne de séjour | | 0,00 (p = 0,97) |
 | Consultations et occupation des lits | -0,11 (p = 0,31) | +0,14 (p = 0,18) |
 
-Corrélations de Spearman. Aucun de ces liens n'est fiable au seuil de 5 %.
+Corrélations de Spearman. Aucun de ces liens n'est fiable au seuil de 5 %. Les variations du domicile sont calculées à périmètre constant (voir les choix de modélisation).
 
 Ça ne contredit pas l'expérience de terrain : la maille départementale est trop grossière. Pour mesurer l'effet du suivi à la sortie, il faudrait suivre les parcours des patients, et ces données ne sont pas ouvertes.
 
@@ -57,7 +57,7 @@ Les deux liens forts (soins libres et part de contrainte) tiennent quand on reti
 
 ![Évolution 2023-2025 de la psychiatrie de l'adulte](visuels/evolution_2023_2025.png)
 
-- Le nombre de patients suivis augmente de 5,8 %, le suivi à domicile de 5,5 % et les consultations de 3,6 %
+- Le nombre de patients suivis augmente de 5,8 %, le suivi à domicile de 4,1 % à périmètre constant et les consultations de 3,6 %
 - Les lits à temps plein reculent de 2,7 % et les infirmiers de 2,3 % : chaque soignant suit 8 % de patients en plus
 - Les places en lieux de vie intermédiaires (placement familial et appartements thérapeutiques) reculent de 9,6 %, alors que ce sont elles qui permettent de sortir de l'hôpital sans revenir directement au domicile
 - Les écarts entre départements pour le suivi à domicile restent stables : le département au 90e centile fait environ 8 fois plus d'actes que celui au 10e centile, chaque année
@@ -98,6 +98,7 @@ archives DREES (SAE 2023, 2024, 2025) + fichier Insee
 - **Localisation par `DEP_DIFF`** : quand une entité juridique répond pour plusieurs sites, l'activité est rattachée au département où elle a réellement lieu.
 - **CMP et unités de consultation regroupés** : certains hôpitaux, surtout les CHU, déclarent une grande part de leur activité en unités de consultation plutôt qu'en CMP (46 % dans l'Hérault). Les séparer créerait un artefact de déclaration.
 - **Contrôle de cohérence entre bordereaux** : les journées ventilées par mode légal (PSY2) doivent correspondre aux journées d'hospitalisation déclarées dans PSY. Quand l'écart dépasse un facteur 2, les modes légaux de l'établissement sont écartés. Sans ce contrôle, le CHU de Grenoble, qui déclare 586 847 journées dans PSY2 en 2024 contre environ 9 500 dans PSY, fausserait à lui seul la tendance nationale. Entre 20 et 29 établissements sont écartés chaque année, soit 1,5 à 1,6 % des journées d'hospitalisation adulte : certains n'ont pas rempli PSY2, d'autres y déclarent des chiffres incohérents.
+- **Rupture de série sur le domicile en 2024** : avec la réforme des autorisations d'activité de soins, l'hospitalisation à domicile (HAD) psychiatrique n'est plus comptée comme du temps complet mais comme des actes à domicile. Les 15 établissements qui avaient une HAD en 2023 voient leurs actes à domicile augmenter de 25 % entre 2023 et 2025, contre 4 % pour les autres. Le modèle repère ces établissements (`concerne_reforme_had`) et le mart fournit une série à périmètre constant (`actes_domicile_perimetre_constant`), utilisée pour toutes les comparaisons entre années. Sans cette correction, la hausse du domicile serait de 5,5 % au lieu de 4,1 %.
 - **Années empilées dès les données brutes** : les noms de colonnes (minuscules en 2023 et 2024, majuscules en 2025) et l'encodage (Latin-1 puis UTF-8) changent selon les millésimes. Le script de préparation les harmonise ; toutes les transformations métier restent dans dbt.
 - **Données brutes chargées en texte**, typées dans le staging : les codes FINESS commencent par un zéro qui disparaîtrait avec une détection automatique des types.
 - **Population par année** : chaque année de la SAE prend la dernière estimation Insee disponible ; ajouter une nouvelle estimation ne demande aucun changement de code.
@@ -113,6 +114,7 @@ archives DREES (SAE 2023, 2024, 2025) + fichier Insee
 - Les modes légaux de soins (bordereau PSY2) ne sont pas ventilés entre adultes et enfants.
 - La population de référence est celle de 2023 pour les trois années, dernière estimation par classe d'âge disponible dans le fichier utilisé. Les évolutions de population sont faibles sur la période, mais les taux pour 1 000 adultes de 2024 et 2025 sont légèrement surestimés.
 - En 2023, la SAE ne renseigne pas l'isolement ni les équipes mobiles pour personnes âgées.
+- Les actes à domicile de 2025 (carte et indicateurs de l'année) incluent l'ancienne HAD psychiatrique de 14 établissements. Les comparaisons entre années utilisent la série à périmètre constant.
 - Quelques valeurs sont à interpréter avec prudence, par exemple le Territoire de Belfort, qui déclare 0,1 % de soins sans consentement en 2025.
 
 ## Sources

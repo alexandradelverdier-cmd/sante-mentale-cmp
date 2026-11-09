@@ -4,7 +4,8 @@ with nat as (
         annee,
         sum(file_active_totale)                                                    as patients_suivis,
         sum(coalesce(actes_cmp, 0) + coalesce(actes_unites_consultation, 0))       as actes_consultation,
-        sum(actes_domicile)                                                        as actes_domicile,
+        -- périmètre constant : l'HAD psychiatrique bascule dans les actes à domicile à partir de 2024
+        sum(actes_domicile_perimetre_constant)                                     as actes_domicile,
         sum(lits_temps_plein)                                                      as lits_temps_plein,
         sum(etp_infirmiers)                                                        as etp_infirmiers,
         sum(etp_psychiatres)                                                       as etp_psychiatres,

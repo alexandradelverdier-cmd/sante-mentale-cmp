@@ -8,6 +8,8 @@ models:
     columns:
       - name: finess
         data_tests: [not_null]
+      - name: concerne_reforme_had
+        description: Vrai si l'établissement avait des places d'HAD psychiatrique avant 2024. Depuis la réforme des autorisations, cette activité est comptée dans les actes à domicile.
       - name: modes_legaux_coherents
         description: Vrai si les journées ventilées par mode légal (PSY2) représentent entre 0,5 et 2 fois les journées à temps complet déclarées dans PSY.
 

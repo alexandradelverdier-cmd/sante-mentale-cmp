@@ -18,6 +18,9 @@ dep as (
         sum(nb_unites_consultation)                 as nb_unites_consultation,
         sum(actes_cattp)                            as actes_cattp,
         sum(actes_domicile)                         as actes_domicile,
+        -- série à périmètre constant pour les évolutions : hors établissements concernés par la réforme de l'HAD
+        sum(case when not concerne_reforme_had then actes_domicile end)
+                                                    as actes_domicile_perimetre_constant,
         sum(places_placement_familial)              as places_placement_familial,
         sum(places_appartement_therapeutique)       as places_appartement_therapeutique,
         sum(lits_temps_plein)                       as lits_temps_plein,

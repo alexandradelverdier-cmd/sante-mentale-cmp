@@ -17,6 +17,8 @@ models:
         description: Actes, soins et interventions à domicile ou en institution substitutive au domicile.
       - name: actes_consultation_pour_1000
         description: Actes en CMP et en unités de consultation de psychiatrie pour 1 000 adultes.
+      - name: actes_domicile_perimetre_constant
+        description: Actes à domicile hors établissements qui avaient une HAD psychiatrique avant 2024. À utiliser pour comparer les années.
       - name: part_actes_domicile
         description: Part du domicile dans l'activité consultations (CMP + unités de consultation) + domicile.
       - name: taux_occupation

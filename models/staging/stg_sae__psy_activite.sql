@@ -24,6 +24,9 @@ select
     {{ to_num('cap_pft') }}                 as places_placement_familial,
     {{ to_num('cap_aat') }}                 as places_appartement_therapeutique,
     {{ to_num('cap_hdj') }}                 as places_hopital_de_jour,
+    -- HAD psychiatrique : mesurée comme du temps complet jusqu'en 2023, puis comme de l'ambulatoire
+    -- (réforme des autorisations d'activité de soins). Colonne absente de la SAE à partir de 2024.
+    {{ to_num('cap_had') }}                 as places_had,
 
     -- hospitalisation à temps plein
     {{ to_num('cap_htp') }}                 as lits_temps_plein,

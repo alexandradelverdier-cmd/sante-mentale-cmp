@@ -17,7 +17,7 @@ INK, MUTED, BG, BLUE, RED, GRID = "#1f1e1b", "#6b6a65", "#fbfaf7", "#2a78d6", "#
 
 SERIES = [
     ("Patients suivis", "file_active_totale"),
-    ("Actes à domicile", "actes_domicile"),
+    ("Actes à domicile*", "actes_domicile_perimetre_constant"),
     ("Consultations (CMP et unités)", "actes_consultation"),
     ("Psychiatres (ETP)", "etp_psychiatres"),
     ("Infirmiers (ETP)", "etp_infirmiers"),
@@ -25,8 +25,8 @@ SERIES = [
     ("Places en lieux de vie intermédiaires", "places_lieux_de_vie"),
 ]
 VARIATIONS = [
-    ("actes_domicile_pour_1000", "taux_occupation"),
-    ("actes_domicile_pour_1000", "duree_moyenne_sejour"),
+    ("actes_domicile_constant_pour_1000", "taux_occupation"),
+    ("actes_domicile_constant_pour_1000", "duree_moyenne_sejour"),
     ("actes_consultation_pour_1000", "taux_occupation"),
     ("lits_pour_100k", "taux_occupation"),
     ("lits_pour_100k", "journees_soins_libres_pour_1000"),
@@ -44,6 +44,8 @@ def tendances(df):
 
 
 def variations(df):
+    # domicile à périmètre constant, pour ne pas confondre une hausse réelle avec le reclassement de l'HAD en 2024
+    df = df.assign(actes_domicile_constant_pour_1000=1000 * df.actes_domicile_perimetre_constant / df.population_adulte)
     rows = []
     for x, y in VARIATIONS:
         w = df.pivot_table(index="code_insee", columns="annee", values=[x, y])
@@ -78,6 +80,8 @@ def graphique(evol, sortie):
     fig.text(0.06, 0.09, "Lieux de vie intermédiaires : placement familial thérapeutique et appartements thérapeutiques.",
              fontsize=9, color=MUTED)
     fig.text(0.06, 0.07, "Consultations : actes en CMP et en unités de consultation de psychiatrie.", fontsize=9, color=MUTED)
+    fig.text(0.06, 0.05, "* À périmètre constant : hors établissements dont l'HAD psychiatrique est comptée à domicile depuis 2024.",
+             fontsize=9, color=MUTED)
     fig.text(0.06, 0.02, "Sources : DREES, SAE 2023 à 2025. Analyse : Alexandra Delverdier", fontsize=8.5, color=MUTED)
     fig.savefig(sortie, facecolor=BG); plt.close(fig)
     print("écrit :", sortie)

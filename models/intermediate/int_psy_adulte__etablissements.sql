@@ -31,6 +31,15 @@ etablissements as (
     select * from {{ ref('stg_sae__etablissements') }}
 ),
 
+-- Établissements qui avaient une HAD psychiatrique avant la réforme de 2024 : à partir de 2024,
+-- cette activité bascule dans les actes à domicile, ce qui crée une rupture de série
+reforme_had as (
+    select finess, true as concerne_reforme_had
+    from {{ ref('stg_sae__psy_activite') }}
+    where discipline = 'GEN' and annee < 2024 and places_had > 0
+    group by 1
+),
+
 controle as (
     select
         m.*,
@@ -45,6 +54,7 @@ controle as (
 
 select
     a.*,
+    coalesce(r.concerne_reforme_had, false)                         as concerne_reforme_had,
     e.raison_sociale,
     e.statut_juridique,
     e.code_departement_sae,
@@ -59,3 +69,4 @@ select
 from activite a
 left join etablissements e using (finess, annee)
 left join controle c using (finess, annee)
+left join reforme_had r using (finess)
