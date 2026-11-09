@@ -62,6 +62,37 @@ Les deux liens forts (soins libres et part de contrainte) tiennent quand on reti
 - Les places en lieux de vie intermédiaires (placement familial et appartements thérapeutiques) reculent de 9,6 %, alors que ce sont elles qui permettent de sortir de l'hôpital sans revenir directement au domicile
 - Les écarts entre départements pour le suivi à domicile restent stables : le département au 90e centile fait environ 8 fois plus d'actes que celui au 10e centile, chaque année
 
+## Ce que racontent ces résultats
+
+### Le constat de terrain
+
+En psychiatrie, l'hospitalisation complète a une fin, et c'est normal dans le parcours du patient. Mais quand elle s'arrête, une fragilité reste souvent présente. Le patient n'a plus sa place dans un lit, qui est rare, et il a encore besoin d'être accompagné. Si personne ne prend le relais à la sortie, la sortie ne tient pas : on revoit les mêmes patients tous les 3 à 6 mois. C'est le phénomène de la « porte tournante ».
+
+### Ce que les données confirment
+
+**La porte d'entrée s'élargit, la porte de sortie se rétrécit.** Entre 2023 et 2025, le système absorbe 5,8 % de patients en plus, surtout par les consultations. Mais ce qui permet de tenir une sortie recule :
+
+| 2023 à 2025, France métropolitaine | Hôpitaux publics | Privé non lucratif | Cliniques privées lucratives |
+|---|---|---|---|
+| Lits à temps plein | -3,8 % | -4,6 % | stable |
+| Patients suivis | +5,5 % | -0,9 % | +21 % |
+| Infirmiers (ETP) | -2,3 % | -3,5 % | stable |
+| Places en lieux de vie intermédiaires | -9,8 % | -8,0 % | aucune |
+
+- Toute la baisse des lits vient de la psychiatrie de secteur, publique et privée non lucrative, qui absorbe pourtant l'essentiel des nouveaux patients
+- Les lieux de vie intermédiaires (placement familial et appartements thérapeutiques), qui servent de transition entre l'hôpital et le domicile, n'existent que dans ce secteur, et ils reculent
+- Chaque soignant suit 8 % de patients en plus
+
+Ces évolutions prolongent une tendance longue. Selon la DREES, la psychiatrie de l'adulte a perdu 7 400 lits depuis 2013 (8 400 dans le public, 2 100 de plus dans le privé lucratif), et les placements alternatifs pour adultes ont reculé de 10,4 %. Selon une enquête de la Fédération hospitalière de France, fin 2022, un quart des établissements publics de psychiatrie avaient fermé entre 10 % et 30 % de leurs capacités, faute de personnel médical et paramédical.
+
+### Ce que les données ne permettent pas de trancher
+
+- **Le recul des lieux de vie intermédiaires** peut traduire une vraie disparition de l'offre, ou un transfert vers le médico-social et le logement accompagné (comme le dispositif « Un chez-soi d'abord »), qui n'apparaît pas dans la SAE
+- **Les réhospitalisations ne sont pas mesurées.** La SAE compte des lits, des actes et des patients, mais pas les allers-retours d'un même patient. Mesurer la porte tournante demanderait les données de parcours (RIM-P, SNDS), dont l'accès est restreint
+- **Les délais d'attente en CMP ne sont publiés nulle part** au niveau national
+
+Autrement dit, la donnée publique décrit l'offre de soins, mais pas ce qui arrive aux patients entre deux hospitalisations. C'est pourtant là que se joue la sortie.
+
 ## Architecture
 
 ```
@@ -121,6 +152,8 @@ archives DREES (SAE 2023, 2024, 2025) + fichier Insee
 
 - DREES, Statistique annuelle des établissements de santé (SAE) 2023, 2024 et 2025, bases statistiques
 - Insee, estimations de population au 1er janvier par département, sexe et grande classe d'âge
+- DREES, [Les établissements de santé, édition 2026, fiche 11 : l'offre de soins de psychiatrie](https://drees.solidarites-sante.gouv.fr/sites/default/files/2026-07/ES%202026%20-%20Fiche%2011%20-%20L%27offre%20de%20soins%20de%20psychiatrie%20dans%20les%20%C3%A9tablissements%20de%20sant%C3%A9.pdf)
+- Fédération hospitalière de France, [enquête psychiatrie 2023](https://fhf.fr/sites/default/files/2023-09/Enqu%C3%AAte%20psychiatrie_2023.pdf)
 
 ## Stack
 
